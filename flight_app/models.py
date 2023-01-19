@@ -32,8 +32,9 @@ class Passenger(models.Model):
 
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    flight = models.ForeignKey(Flight, on_delete=models.SET_NULL, null=True)
-    passenger = models.ManyToManyField(Passenger)
+    flight = models.ForeignKey(
+        Flight, on_delete=models.SET_NULL, null=True,  related_name="reservation")
+    passenger = models.ManyToManyField(Passenger, related_name="reservations")
 
     def __str__(self):
         return f"{self.flight} {self.user.username}"
