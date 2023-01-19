@@ -41,5 +41,8 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc",
          cache_timeout=0), name="schemaredoc"),
     # debug toolbar
-    path("__debug__/", include('debug_toolbar.urls'))
+    path("__debug__/", include('debug_toolbar.urls')),
+    # my apps
+    path('account/', include('accounts_app.urls')),
+    path("", include("flight_app.urls"))
 ]
